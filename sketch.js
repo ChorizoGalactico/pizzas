@@ -84,41 +84,21 @@ function ecuaPP(p1,p2) {
 	var dx = p2.x - p1.x;
 	var dy = p2.y - p1.y;
 
-	point(p1.x, p1.y)
+	let x;
+    let m, b, y;
+    
+    m = dy / dx;
+    b = p1.y - m * p1.x;
 
-	var m,b;
-	let y,x;
-
-	if (dx >dy || dy ==0) {
-		m = dy / dx;
-		b = p1.y - m * p1.x
-		console.log(m+"&"+b)
-		if (dx < 0) {
-			dx = -1;
-		}else{
-			dx = 1
-		}
-		console.log(dx)
-		while(p1.x !=  p2.x){
-			
-			p1.x += dx;
-			y = m * p1.x + b;
-			point(p1.x, y)
-		}
-	}else if (dy !=0 ) {
-		m= dx / dy;
-		b = p1.x - m*p1.y;
-		if (p1.y < 0) {
-			dy = -1;
-		}else{
-			dy = 1;
-		}
-		while(p1.y !=  p2.y){
-		p1.y += dy;
-		x = m * p1.y + b;
-		point(x, p1.y)
-		}
-	}
+    x = p1.x;
+    y = p1.y;
+     
+    while (x < (p2.x + 1)) {
+        
+        point(x, p1.y)
+        x++;
+        y = m * x + b; 
+    }
 }
 
 function ecuaDDA(p1, p2) {
